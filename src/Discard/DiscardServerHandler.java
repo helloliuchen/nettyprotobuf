@@ -1,5 +1,7 @@
 package Discard;
 
+import java.net.SocketAddress;
+
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
@@ -32,7 +34,6 @@ public class DiscardServerHandler extends SimpleChannelHandler {
 			throws Exception {
 		System.out.println("channelOpen");
 		super.channelOpen(ctx, e);
-		
 	}
 
 	@Override
@@ -45,7 +46,8 @@ public class DiscardServerHandler extends SimpleChannelHandler {
 	@Override
 	public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e)
 			throws Exception {
-		System.out.println("channelConnected");
+		SocketAddress address = (SocketAddress)e.getValue();
+		System.out.println("channelConnected" + address.toString());
 		super.channelConnected(ctx, e);
 	}
 
@@ -55,4 +57,6 @@ public class DiscardServerHandler extends SimpleChannelHandler {
 		System.out.println("bindRequest");
 		super.bindRequested(ctx, e);
 	}	
+	
+	
 }
