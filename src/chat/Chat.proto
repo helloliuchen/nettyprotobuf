@@ -1,0 +1,26 @@
+package chat;
+
+// c -> s
+message Enter {
+	required string name = 1;
+}
+
+// s -> c
+message Users {
+	repeated string names = 1;
+}
+
+// c -> s
+message Say {
+	required string word = 1;
+}
+
+// s -> c
+message SayBC {
+	required string name = 1;
+	required string word = 2; 
+}
+
+// c -> s
+message Leave {
+}

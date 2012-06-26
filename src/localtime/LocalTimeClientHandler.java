@@ -31,6 +31,8 @@ import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
+import org.jboss.netty.handler.codec.protobuf.ProtobufDecoder;
+
 import localtime.LocalTimeProtocol.Continent;
 import localtime.LocalTimeProtocol.LocalTime;
 import localtime.LocalTimeProtocol.LocalTimes;
@@ -52,7 +54,10 @@ public class LocalTimeClientHandler extends SimpleChannelUpstreamHandler {
     private volatile Channel channel;
     private final BlockingQueue<LocalTimes> answer = new LinkedBlockingQueue<LocalTimes>();
 
+    // 开始就执行这里
     public List<String> getLocalTimes(Collection<String> cities) {
+    	
+    	//  发送阶段
         Locations.Builder builder = Locations.newBuilder();
 
         for (String c: cities) {
@@ -63,7 +68,8 @@ public class LocalTimeClientHandler extends SimpleChannelUpstreamHandler {
         }
 
         channel.write(builder.build());
-
+        //--------------------------------
+        // 接收阶段, 阻塞式
         LocalTimes localTimes;
         boolean interrupted = false;
         for (;;) {
@@ -115,6 +121,7 @@ public class LocalTimeClientHandler extends SimpleChannelUpstreamHandler {
     @Override
     public void messageReceived(
             ChannelHandlerContext ctx, final MessageEvent e) {
+    	// 注意, 这里经过new ProtobufDecoder(LocalTimeProtocol.LocalTimes.getDefaultInstance()), 已经得到LocalTimes
         boolean offered = answer.offer((LocalTimes) e.getMessage());
         assert offered;
     }
