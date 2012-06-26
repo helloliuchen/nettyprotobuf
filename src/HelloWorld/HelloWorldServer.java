@@ -25,7 +25,7 @@ public class HelloWorldServer {
 			@Override
 			public ChannelPipeline getPipeline() throws Exception {
 				ChannelPipeline pipeline = Channels.pipeline();
-				//pipeline.addLast("decoder", new StringDecoder());
+				pipeline.addLast("decoder", new StringDecoder());
 				pipeline.addLast("encoder", new StringEncoder());
 				pipeline.addLast("handler", new HeloWorldServerHandler());
 				return pipeline;

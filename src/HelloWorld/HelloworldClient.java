@@ -27,7 +27,7 @@ public class HelloworldClient {
 			public ChannelPipeline getPipeline() throws Exception {
 				ChannelPipeline pipeline = Channels.pipeline();
 				pipeline.addLast("decode", new StringDecoder());
-				//pipeline.addLast("encode", new StringEncoder());
+				pipeline.addLast("encode", new StringEncoder());
 				pipeline.addLast("hanlder", new HelloWorldClientHandler());
 				return pipeline;
 			}
