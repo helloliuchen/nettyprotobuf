@@ -10,26 +10,26 @@ public class Utils {
         builder.setName("test");
         Enter enter = builder.build();
         System.out.println(getName(enter));
-        Class<?> cls = null;
-        try
-        {
-        	cls = Class.forName("chat.Chat$Enter");
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();
-        }
-        try {
-			MessageLite m = (MessageLite)cls.newInstance();
-			
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
+//        Class<?> cls = null;
+//        try
+//        {
+//        	cls = Class.forName("chat.Chat$Enter");
+//        }
+//        catch(Exception e)
+//        {
+//        	e.printStackTrace();
+//        }
+//        try {
+//			MessageLite m = (MessageLite)cls.newInstance();
+//			
+//		} catch (InstantiationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        
         
     }
     

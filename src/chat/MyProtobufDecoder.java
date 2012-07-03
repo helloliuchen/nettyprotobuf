@@ -20,31 +20,8 @@ public class MyProtobufDecoder extends OneToOneDecoder implements
 			ChannelBuffer buf = (ChannelBuffer)msg;
 			int id = (int)buf.readChar();
 			String name = Mapping.Int2NameMapping.get(id);
-			Class<?> cls = null;
-	        try
-	        {
-	        	cls = Class.forName(name);
-	        }
-	        catch(Exception e)
-	        {
-	        	e.printStackTrace();
-	        }
-	        try {
-				MessageLite prototype = (MessageLite)cls.newInstance();
-				if (buf.hasArray()) {
-		            final int offset = buf.readerIndex();
-		          
-		                return prototype.newBuilderForType().mergeFrom(
-		                        buf.array(), buf.arrayOffset() + offset, buf.readableBytes()).build();
-		        } else {
-		                return prototype.newBuilderForType().mergeFrom(
-		                		new ChannelBufferInputStream((ChannelBuffer) msg)).build();
-		        }
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
+			// 这里可以直接使用id->参数即可
+			
 		}
 		return null;
 	}

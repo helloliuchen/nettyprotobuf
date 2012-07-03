@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/netty-3.2.7.Final.jar" sourcepath="D:/work/netty-3.2.6.Final/netty/jar/netty-3.2.6.Final-sources.jar"/>
+	<classpathentry kind="lib" path="lib/netty-3.2.7.Final.jar" sourcepath="D:/work/netty-3.2.7.Final/jar/netty-3.2.7.Final-sources.jar"/>
 	<classpathentry kind="lib" path="D:/work/nettyprotobuf/lib/protobuf-java-2.4.1.jar" sourcepath="D:/work/nettyprotobuf/lib/protobuf-java-2.4.1-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/D:/work/nettyprotobuf/lib/protobuf-java-2.4.1-javadoc.jar!/"/>
